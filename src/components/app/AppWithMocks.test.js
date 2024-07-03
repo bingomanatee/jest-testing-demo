@@ -12,12 +12,7 @@ describe('App', () => {
         });
 
         const appModule = await import('./App');
-        LocalApp = function LocalApp() {
-          const BaseApp = appModule.default;
-          return <div>
-            <BaseApp />
-          </div>
-        }
+        LocalApp = appModule.default
         console.log('local app is ', LocalApp);
       });
 
