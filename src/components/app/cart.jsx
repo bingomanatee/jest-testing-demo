@@ -1,4 +1,4 @@
-import {timestamp} from "../app/timestamp";
+import {timestamp} from "./timestamp";
 
 export function Cart({items}) {
 
@@ -6,7 +6,7 @@ export function Cart({items}) {
     <section>
       <hr />
       <h2>Shopping cart {timestamp()}</h2>
-      <ul>
+      <ul id='cart-items'>
         {items.map((i) => {
           return <li key={i.id}>{i.name}</li>
         })}

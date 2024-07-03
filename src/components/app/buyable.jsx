@@ -4,6 +4,6 @@ export default function Buyable( props ) {
   return <div className='product'>
     <h3>{name}</h3>
     {children}
-    <button type='button' onClick={ () => handleBuy(props)}>Add to Cart</button>
+    <button type='button' id={`buyable-button-${id}`} onClick={ () => handleBuy(props)}>Add to Cart</button>
   </div>
 }

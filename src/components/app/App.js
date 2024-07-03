@@ -1,9 +1,9 @@
 import logo from '../../logo.svg';
 import './App.css';
-import {Cart} from "../cart/cart";
-import {useCallback, useRef, useState} from "react";
-import {items} from "../cart/items";
-import Buyable from "../buyable/buyable";
+import {Cart} from "./cart";
+import {useCallback, useState} from "react";
+import {items} from "./items";
+import Buyable from "./buyable";
 
 function App() {
 

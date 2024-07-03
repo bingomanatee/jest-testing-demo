@@ -28,6 +28,7 @@ exports[`App snapshot will succeed should render a snapshot of the store with mo
           A hefty manly man's shirt
         </p>
         <button
+          id="buyable-button-mens-shirt"
           type="button"
         >
           Add to Cart
@@ -43,6 +44,7 @@ exports[`App snapshot will succeed should render a snapshot of the store with mo
           A hefty womanly woman's shirt
         </p>
         <button
+          id="buyable-button-womens-shirt"
           type="button"
         >
           Add to Cart
@@ -54,7 +56,9 @@ exports[`App snapshot will succeed should render a snapshot of the store with mo
           Shopping cart 
           ___ mock timestamp ___
         </h2>
-        <ul />
+        <ul
+          id="cart-items"
+        />
       </section>
     </div>
   </div>
