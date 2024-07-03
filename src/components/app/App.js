@@ -1,19 +1,24 @@
 import logo from '../../logo.svg';
 import './App.css';
 import {Cart} from "./cart";
-import {useCallback, useState} from "react";
-import {items} from "./items";
+import {useCallback, useEffect, useState} from "react";
+import {ItemsManager} from "./items";
 import Buyable from "./buyable";
 
-function App() {
+export function App() {
 
-  const [cartItems, setCartItems] = useState(items);
+  const [cartItems, setCartItems] = useState([]);
+
+  useEffect(() =>{
+    setCartItems(ItemsManager.Singleton.getItems());
+  }, [])
 
   const addToCart = useCallback(({name, id}) => {
 
     const item = {name, id};
-    items.push(item);
-    setCartItems([...items]);
+    const newCartItems = [...cartItems, item];
+    setCartItems(newCartItems);
+    ItemsManager.Singleton.setItems(newCartItems)
 
   }, [setCartItems]);
   return (
@@ -37,5 +42,3 @@ function App() {
     </div>
   );
 }
-
-export default App;

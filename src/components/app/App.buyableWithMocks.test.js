@@ -14,25 +14,41 @@ describe('App', () => {
 
 
   describe('Buyable test with Mocks', () => {
+    let items = [];
     afterEach(() => {
       cleanup();
+      jest.clearAllMocks();
+      jest.restoreAllMocks();
+      items = [];
     });
     let LocalApp;
-    let itemsModule;
     beforeEach(async () => {
+      //console.log('jest: ', jest);
       await jest.mock('./items', () => {
+        const ItemsManager = {
+          foo: 'bar',
+
+          Singleton: {
+            getItems() {
+              return items;
+            },
+            setItems(newItems) {
+              items = [...newItems]
+            }
+          }
+        };
+
         return ({
-          items: [],
+          ItemsManager
         });
-      })
-      itemsModule = await import('./items');
+      });
+
       const appModule = await import('./App');
-      LocalApp = appModule.default;
+      LocalApp = appModule.App;
     });
 
     it('should add a mans shirt to the items collection', async () => {
       const {container, user} = setup(<LocalApp/>);
-      console.log('bwm - items module = ', itemsModule);
       const cartItems = container.querySelector('#cart-items');
       expect(cartItems.childNodes.length).toBe(0);
 
@@ -44,7 +60,6 @@ describe('App', () => {
 
     it('should add a womans shirt to the items collection', () => {
       const {container} = setup(<LocalApp/>);
-      console.log('bwm - items module 2 = ', itemsModule);
       const cartItems = container.querySelector('#cart-items');
       expect(cartItems.childNodes.length).toBe(0);
 

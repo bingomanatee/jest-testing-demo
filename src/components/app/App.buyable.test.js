@@ -18,7 +18,7 @@ describe('App', () => {
     let LocalApp;
     beforeEach(async () => {
       const appModule = await import('./App');
-      LocalApp = appModule.default
+      LocalApp = appModule.App
     });
 
     it('should add a mans shirt to the items collection', async () => {

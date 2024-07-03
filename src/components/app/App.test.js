@@ -1,5 +1,5 @@
 import {cleanup, render} from '@testing-library/react';
-import App from './App';
+import {App} from './App';
 import {timestamp} from "./timestamp";
 
 const MOCKED_TIMESTAMP = '___ mock timestamp ___';
@@ -26,7 +26,7 @@ describe('App', () => {
         */
       });
 
-      it.skip('should render a snapshot of the store', () => {
+      it('should render a snapshot of the store', () => {
         /**
          * App's downstream cart , <Cart /> should use the mocked timestamp function, right?
          * wrong!!!! if you look at its snapshot it integrates the base timestamp function

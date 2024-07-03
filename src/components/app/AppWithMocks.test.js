@@ -14,7 +14,7 @@ describe('App', () => {
         });
 
         const appModule = await import('./App');
-        LocalApp = appModule.default
+        LocalApp = appModule.App
       });
       it('should render a snapshot of the store with mock date', () => {
         const {baseElement} = render(<LocalApp/>);
